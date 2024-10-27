@@ -1,0 +1,63 @@
+//
+@property --inset-block-start {
+    syntax: "<length-percentage>";
+    initial-value: 0px;
+    inherits: true;
+}
+
+//
+@property --inset-inline-start {
+    syntax: "<length-percentage>";
+    initial-value: 0px;
+    inherits: true;
+}
+
+//
+@layer u2-rows {
+
+    //
+    div[is="u-rows"] {
+        // when direction="column" condition
+        inline-size: 100%;
+        block-size: var(--block-size);
+        min-block-size: 100%;
+        overflow: visible;
+        padding: 0px;
+
+        // when direction="column" condition
+        max-inline-size: 100%;
+        max-block-size: none;
+
+        //
+        display: block flow;
+        position: relative;
+
+        //
+        container-type: size;
+
+        //
+        //will-change: left, top, inset-inline-start, inset-block-start, --inset-inline-start, --inset-block-start;
+
+        //
+        & > * {
+            inline-size: 100%;
+
+            //
+            position: absolute;
+            inset: auto;
+            inset-inline-start: var(--inset-inline-start, 0px);
+            inset-block-start: var(--inset-block-start, 0px);
+
+            //
+            will-change: left, top, inset-inline-start, inset-block-start, --inset-inline-start, --inset-block-start;
+        }
+
+        //
+        &[data-enable-transition="true"] > * {
+            transition-duration: 0.2s;
+            transition-timing-function: linear;
+            transition-property: --inset-inline-start, --inset-block-start;
+        }
+    }
+
+}
