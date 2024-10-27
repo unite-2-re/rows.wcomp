@@ -1,5 +1,9 @@
 import { observeAttributeBySelector, observeBySelector, observeContentBox } from "./Observer";
 
+// @ts-ignore
+import styles from "./FlexLike.scss?inline";
+const preInit = URL.createObjectURL(new Blob([styles], {type: "text/css"}));
+
 // this flex-like supports animations
 export default class FlexLike extends HTMLDivElement {
     static observedAttributes = ["data-direction"];
@@ -13,6 +17,11 @@ export default class FlexLike extends HTMLDivElement {
     //
     constructor() {
         super();
+
+        //
+        const style = document.createElement("style");
+        style.innerHTML = `@import url("${preInit}");`;
+        this?.shadowRoot?.appendChild?.(style);
 
         //
         this.style.position = "relative";
@@ -72,3 +81,12 @@ export default class FlexLike extends HTMLDivElement {
 
 //
 customElements.define('u-rows', FlexLike, {extends: 'div'});
+
+// Pre-load rows stylesheets
+{   //
+    const style = document.createElement("link");
+    style.rel = "stylesheet";
+    style.type = "text/css";
+    style.href = preInit;
+    document.head.appendChild(style);
+}

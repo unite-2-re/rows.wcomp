@@ -16,30 +16,32 @@
 @layer u2-rows {
 
     //
-    div[is="u-rows"] {
-        // when direction="column" condition
-        inline-size: 100%;
-        block-size: var(--block-size);
-        min-block-size: 100%;
-        overflow: visible;
-        padding: 0px;
+    div[is="u-rows"],
+    :host(div[is="u-rows"]),
+    :host {
 
-        // when direction="column" condition
-        max-inline-size: 100%;
-        max-block-size: none;
+        & {
+            // when direction="column" condition
+            inline-size: 100%;
+            block-size: var(--block-size);
+            min-block-size: 100%;
+            overflow: visible;
+            padding: 0px;
+
+            // when direction="column" condition
+            max-inline-size: 100%;
+            max-block-size: none;
+
+            //
+            display: block flow;
+            position: relative;
+
+            //
+            container-type: size;
+        }
 
         //
-        display: block flow;
-        position: relative;
-
-        //
-        container-type: size;
-
-        //
-        //will-change: left, top, inset-inline-start, inset-block-start, --inset-inline-start, --inset-block-start;
-
-        //
-        & > * {
+        & > *, ::slotted(*) {
             inline-size: 100%;
 
             //
