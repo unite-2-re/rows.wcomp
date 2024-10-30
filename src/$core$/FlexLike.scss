@@ -55,7 +55,7 @@
         }
 
         //
-        &[data-enable-transition="true"] > * {
+        &[data-enable-transition] > * {
             transition-duration: 0.2s;
             transition-timing-function: linear;
             transition-property: --inset-inline-start, --inset-block-start;

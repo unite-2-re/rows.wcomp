@@ -10,7 +10,7 @@ export default class FlexLike extends HTMLDivElement {
 
     //
     connectedCallback() {
-        this.dataset.enableTransition = "false";
+        delete this.dataset.enableTransition;
         this.#recalculate();
     }
 
@@ -30,7 +30,7 @@ export default class FlexLike extends HTMLDivElement {
         observeAttributeBySelector(document.documentElement, "*[data-hidden]", "data-hidden", (m)=>{
             const has = Array.from(m.target.querySelectorAll("*[is=\"u-rows\"]"));
             if (has.length > 0 && has.some((e)=>(e==this)) && (m.oldValue != m.target.dataset.hidden)) {
-                this.dataset.enableTransition = "false";
+                delete this.dataset.enableTransition;
             }
         });
 
