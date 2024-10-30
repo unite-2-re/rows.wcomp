@@ -88,5 +88,6 @@ customElements.define('u-rows', FlexLike, {extends: 'div'});
     style.rel = "stylesheet";
     style.type = "text/css";
     style.href = preInit;
+    style.dataset.owner = "rows";
     document.head.appendChild(style);
 }
