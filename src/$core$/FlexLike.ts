@@ -5,7 +5,7 @@ import styles from "./FlexLike.scss?inline&compress";
 const preInit = URL.createObjectURL(new Blob([styles], {type: "text/css"}));
 
 // this flex-like supports animations
-export default class FlexLike extends HTMLDivElement {
+export default class UIFlexLike extends HTMLDivElement {
     static observedAttributes = ["data-direction"];
 
     //
@@ -80,7 +80,7 @@ export default class FlexLike extends HTMLDivElement {
 }
 
 //
-customElements.define('u-rows', FlexLike, {extends: 'div'});
+customElements.define('ui-rows', UIFlexLike, {extends: 'div'});
 
 //
 const OWNER = "rows";;
@@ -137,5 +137,3 @@ const loadInlineStyle = (inline: string, rootElement = document.head)=>{
 
 //
 loadBlobStyle(preInit);
-
-
